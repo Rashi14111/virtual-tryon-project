@@ -1,0 +1,65 @@
+<html>
+
+<head>
+
+<title>Virtual Garment Try-On</title>
+
+<style>
+
+body{
+text-align:center;
+font-family:Arial;
+background:#f2f2f2;
+}
+
+.camera{
+margin-top:20px;
+}
+
+.garments img{
+width:120px;
+margin:10px;
+cursor:pointer;
+border:3px solid transparent;
+}
+
+.garments img:hover{
+border:3px solid blue;
+}
+
+</style>
+
+</head>
+
+<body>
+
+<h1>Virtual Garment Try-On</h1>
+
+<div class="camera">
+<img src="{{ url_for('video_feed') }}" width="700">
+</div>
+
+<h2>Select Garment</h2>
+
+<div class="garments">
+
+<img src="/static/garments/shirt.png"
+onclick="selectGarment('shirt.png')">
+
+<img src="/static/garments/men_fullwear2.png"
+onclick="selectGarment('men_fullwear2.png')">
+
+</div>
+
+<script>
+
+function selectGarment(name)
+{
+fetch("/set_garment/"+name)
+}
+
+</script>
+
+</body>
+
+</html>
